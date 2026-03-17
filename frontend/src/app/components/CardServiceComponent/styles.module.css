@@ -1,0 +1,115 @@
+.card {
+  /*  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start; */
+
+
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+
+
+  background: #fff;
+  /*   border-radius: 10px; */
+  padding: 24px;
+  box-sizing: border-box;
+  /* width: 400px;
+  margin-left: 5px;
+  margin-right: 5px; */
+  overflow-wrap: break-word;
+  font-feature-settings: "liga", "clig";
+  /* для красивых лигатур (если шрифт поддерживает) */
+  height: 500px;
+  overflow-y: auto;
+}
+
+.moderationCard {
+  background: aquamarine;
+}
+
+.status {
+  font-style: italic;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100px;
+  max-height: 100px;
+}
+
+.title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #111827;
+  letter-spacing: -0.01em;
+  word-break: break-all;
+  padding: 5px;
+}
+
+.description {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
+  /*   line-height: 1.5; */
+  color: #4b5563;
+  margin: 0 0 20px;
+  font-weight: 400;
+  min-height: 100px;
+  max-height: 100px;
+}
+
+.inReturn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-height: 200px;
+  margin: 0 0 20px;
+
+}
+
+.inReturnLabel {
+  font-weight: 600;
+  color: #4caf50;
+  /* ваш зелёный — чисто семантически */
+  margin-bottom: 4px;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+}
+
+.inReturnText {
+  color: #374151;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+  height: 50px;
+}
+
+.userId {
+  color: #1f2937;
+}
+
+.deleteEditContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 50px;
+}

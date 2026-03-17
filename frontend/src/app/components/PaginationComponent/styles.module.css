@@ -1,0 +1,54 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 10px;
+  width: 300px;
+  margin: 0 auto;
+
+  height: 50px;
+}
+
+.containerPage {
+  width: 100%;
+  position: relative;
+  height: 50px;
+  overflow-x: hidden;
+  width: 200px;
+
+}
+
+.wrapperPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 50px;
+  top: 0;
+
+}
+
+.leftArrow,
+.rightArrow {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.page {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  align-items: center;
+  cursor: pointer;
+
+}
+
+.activePage {
+  border-bottom: 1px solid grey;
+}

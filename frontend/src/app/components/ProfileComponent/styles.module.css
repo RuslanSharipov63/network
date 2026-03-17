@@ -1,0 +1,100 @@
+.page {
+  background-color: #f5f7fa;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileCard {
+  /*  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 10px;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  /* 4 колонки по 250px */
+  gap: 1.5rem;
+  padding: 2rem; 
+  max-width: 1200px;
+  margin: 0 auto;
+ grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  justify-content: center;
+  height: auto;
+/*   padding: 20px; */
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  border: 2px solid #ddd;
+}
+
+.editButton {
+  background: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 230px;
+}
+
+.editForm {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+.editForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.editForm input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.saveButton {
+  background: #2196f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.sectionTitle {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 40px;
+}

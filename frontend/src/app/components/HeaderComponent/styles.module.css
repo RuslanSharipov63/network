@@ -1,0 +1,27 @@
+.headerLayout {
+  background-color: #4caf50;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.headerLayout h1 {
+  font-size: 1.5em;
+}
+
+.navLayout ul {
+  display: flex;
+  list-style: none;
+}
+
+.navLayout ul li {
+  margin-left: 20px;
+}
+
+.linkLayout {
+  color: white;
+  text-decoration: none;
+}
