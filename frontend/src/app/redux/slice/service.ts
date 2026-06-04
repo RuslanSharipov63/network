@@ -6,11 +6,12 @@ export const fetchGetservice = createAsyncThunk(
   async (id: string) => {
 
     const response = await fetch(
-      `http://localhost:5000/api/service/getservice`, 
-    {  method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id })
-    }
+      `http://localhost:5000/api/service/getservice`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id })
+      }
     );
     const data = await response.json();
     return data;
@@ -132,7 +133,7 @@ type InitialState = {
   status: 'pending' | 'fulfilled' | 'rejected' | 'idle';
   services: {
     id: number;
-    userId: number | string;
+    userid: number | string;
     title: string;
     description: string;
     needed: string;
@@ -181,9 +182,6 @@ export const service = createSlice({
       needed: string;
       status: string
     }>) => {
-
-      console.log('state', state)
-
 
       const idx = state.services.findIndex(el => el.id === action.payload.id);
       if (idx !== -1) {
@@ -258,7 +256,9 @@ export const service = createSlice({
         state.success = action.payload.success;
         state.services = action.payload.service;
       })
-
+      .addCase(fetchGetservice.rejected, (state, action) => {
+        state.status = "rejected";
+      })
   },
 });
 

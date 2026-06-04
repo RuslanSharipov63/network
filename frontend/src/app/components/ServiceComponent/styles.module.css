@@ -1,0 +1,149 @@
+.serviceDetailPage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.serviceHeader {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.serviceTitle {
+  font-size: 2.2rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.serviceContent {
+  display: grid;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .serviceContent {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.serviceInfo h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin: 20px 0 10px;
+}
+
+.serviceInfo p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.authorCard {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.authorInfo {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.avatarPlaceholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.authorInfo h4 {
+  margin: 0 0 5px;
+  color: #2e7d32;
+}
+
+.region {
+  font-size: 0.9em;
+  color: #777;
+  margin: 0;
+}
+
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.btnPrimary {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;     /* ✅ Число + единица измерения */
+  cursor: pointer;
+  flex: 1;
+  min-width: 140px;   /* ✅ Вероятно, вы имели в виду минимальную ширину (как в других кнопках) */
+  /* или, если хотели высоту: */
+  /* height: 40px; */
+}
+
+.btn {
+  background: #f1f1f1;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 1;
+  min-width: 140px;
+}
+
+.btnOutline {
+  background: transparent;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 1;
+  min-width: 140px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.backLink {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.centered {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* Переносим твой общий класс raitingStars */
+.raitingStars {
+  display: flex;
+  justify-content: flex-start;
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+}

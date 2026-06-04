@@ -8,3 +8,6 @@ export type ServiceCard = {
   status: string;
   updated_at: Date | null;
 };
+
+
+export type lastMessageDataType = { lastDate: Date, to_user_id: number, from_user_id: number | string }

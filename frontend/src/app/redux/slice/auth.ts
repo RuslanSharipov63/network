@@ -10,6 +10,7 @@ type InitialState = {
     username: string;
     avatarUrl: string;
     address?: string;
+    role: string;
   };
 };
 
@@ -21,7 +22,8 @@ const initialState: InitialState = {
     email: "",
     username: "",
     avatarUrl: "",
-    address: ""
+    address: "",
+    role: "",
   },
 };
 
@@ -30,6 +32,7 @@ export const auth = createSlice({
   initialState,
   reducers: {
     authUser: (state, action: PayloadAction<InitialState>) => {
+
       state.success = action.payload.success;
       state.message = action.payload.message;
       state.user = action.payload.user;
@@ -40,6 +43,7 @@ export const auth = createSlice({
         email: "",
         username: "",
         avatarUrl: "",
+        role: "",
       };
     },
   },

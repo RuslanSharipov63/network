@@ -30,7 +30,8 @@ router.get('/', async (req, res) => {
         email: user.email,
         username: user.username,
         avatarUrl: user.avatar,
-        address: user.address
+        address: user.address,
+        role: user.role
       }
     });
   } catch (err) {
