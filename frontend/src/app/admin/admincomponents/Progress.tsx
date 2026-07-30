@@ -22,8 +22,6 @@ const AdminProgress = ({ loading }: { loading: boolean }) => {
     return (
         < Flex wrap gap="small" >
             <Progress type="circle" percent={percent} size={80} />
-            {/*      <Progress type="circle" percent={70} size={80} status="exception" />
-        <Progress type="circle" percent={100} size={80} /> */}
         </Flex >
     )
 };

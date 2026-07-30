@@ -215,6 +215,7 @@ export const service = createSlice({
           state.services = action.payload.services;
           state.success = action.payload.success;
           state.status = "fulfilled";
+          state.message = "";
         }
       )
       .addCase(fetchDeleteService.pending, (state) => {

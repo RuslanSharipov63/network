@@ -5,6 +5,7 @@
     "dev:backend": "npm run dev --prefix backend"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.101.0",
     "concurrently": "^9.2.1"
   },
   "devDependencies": {

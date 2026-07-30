@@ -2,7 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
-import http from 'http'; // ← ВАЖНО: добавьте этот импорт
+import http from 'http'; 
 
 import registerRouter from "./api/register.js";
 import loginRouter from "./api/login.js";

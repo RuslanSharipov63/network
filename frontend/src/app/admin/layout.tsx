@@ -1,12 +1,14 @@
 "use client"
+import { QueryClientProvider,  QueryClient } from "@tanstack/react-query";
 import { redirect } from "next/navigation";
 import React, { useLayoutEffect, useState } from 'react';
-import {  Layout, Menu, theme, Typography } from 'antd';
+import { Layout, Menu, theme, Typography } from 'antd';
 const { Header, Content } = Layout;
 import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 const { Text } = Typography;
 import { authUser } from '../redux/slice/auth';
 
+const queryClient = new QueryClient()
 
 const items = Array.from({ length: 3 }).map((_, index) => ({
     key: index + 1,
@@ -49,7 +51,7 @@ export default function AdminLayout({ children, }: { children: React.ReactNode }
                         setCheckRole("admin")
                         return;
                     }
-                   
+
                 }
                 if (data.success == false) {
                     return;
@@ -59,8 +61,8 @@ export default function AdminLayout({ children, }: { children: React.ReactNode }
             }
 
             if (checkRole !== 'admin') {
-                redirect("/adminpanel")  
-            }      
+                redirect("/adminpanel")
+            }
         };
 
         checkAuth();
@@ -90,20 +92,22 @@ export default function AdminLayout({ children, }: { children: React.ReactNode }
                     />
                 </Header>
                 <Text type="success" style={{ margin: '16px 5px' }}>Панель администратора</Text>
-                <Content style={{ padding: '0 48px' }}>
+                <QueryClientProvider client={queryClient}>
+                    <Content style={{ padding: '0 48px' }}>
 
-                    <div
-                        style={{
-                            background: colorBgContainer,
-                            minHeight: "100vh",
-                            padding: 24,
-                            borderRadius: borderRadiusLG,
-                            boxSizing: "border-box",
-                        }}
-                    >
-                        {children}
-                    </div>
-                </Content>
+                        <div
+                            style={{
+                                background: colorBgContainer,
+                                minHeight: "100vh",
+                                padding: 24,
+                                borderRadius: borderRadiusLG,
+                                boxSizing: "border-box",
+                            }}
+                        >
+                            {children}
+                        </div>
+                    </Content>
+                </QueryClientProvider>
                 {/*      <Footer style={{ textAlign: 'center' }}>Ant Design ©{currentYear} Created by Ant UED</Footer> */}
             </Layout >}
         </>

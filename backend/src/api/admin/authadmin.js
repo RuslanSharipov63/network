@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
             },
         });
     } catch (err) {
-        console.error("[Ошибка входа]", err);
+        console.error("Ошибка входа", err);
         res.status(500).json({ success: false, message: "Серверная ошибка" });
     }
 

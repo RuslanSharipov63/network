@@ -16,6 +16,7 @@ const HeaderComponent = () => {
 
   const [checkUrl, setCheckUrl] = useState(false)
   const [isAdmin, setIsadmin] = useState(false)
+  const [mobileMenu, setMobileMenu] = useState<boolean>(false)
 
   useEffect(() => {
     const currentUrl = checkUrlParam('admin');
@@ -57,7 +58,7 @@ const HeaderComponent = () => {
           );
           setCheckUrl(false)
           return
-        } 
+        }
         if (data.success == false) {
           setCheckUrl(true);
           return;
@@ -100,7 +101,9 @@ const HeaderComponent = () => {
       console.error("Сетевая ошибка при выходе:", err);
     }
   };
-
+  const openMobileMenu = () => {
+    setMobileMenu(!mobileMenu)
+  }
   return (
     <>
       {isAdmin == false && <header className={styles.headerLayout}>
@@ -138,7 +141,40 @@ const HeaderComponent = () => {
             )}
           </ul>
         </nav>
-      </header>}
+
+        <nav className={styles.mobileLayout} onClick={openMobileMenu}>
+          меню
+          <ul className={`${mobileMenu ? styles.containerLinkActive : styles.containerLink }`}>
+            <li>
+              <Link href="/" className={styles.linkLayout}>
+                Главная
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className={styles.linkLayout}>
+                Услуги
+              </Link>
+            </li>
+            <li>
+              <Link href="/profile" className={styles.linkLayout}>
+                Профиль
+              </Link>
+            </li>
+            <li>
+              <Link href="/login" className={styles.linkLayout}>
+                {user.username != "" ? user.username : "Войти"}
+              </Link>
+            </li>
+            {user.username != "" && (
+              <li>
+                <Link href="#" className={styles.linkLayout} onClick={handleLogout}>
+                  Выход
+                </Link>
+              </li>
+            )}
+          </ul>
+        </nav>
+      </header >}
     </>
 
   );
