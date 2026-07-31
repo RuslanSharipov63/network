@@ -2,11 +2,12 @@ import { useState, useEffect, FC } from 'react';
 import { BASE_URL } from '@/constant';
 
 type InpAddressDadataComponentProps = {
-    addAddress: (address: string) => void
+  addAddress: (address: string) => void;
+  currentAddress?: string
 }
 
-const InpAddressDadataComponent:FC<InpAddressDadataComponentProps> = ({addAddress}) => {
-  const [query, setQuery] = useState('');
+const InpAddressDadataComponent: FC<InpAddressDadataComponentProps> = ({ addAddress, currentAddress }) => {
+  const [query, setQuery] = useState(currentAddress ? currentAddress : '');
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
   useEffect(() => {
@@ -30,11 +31,10 @@ const InpAddressDadataComponent:FC<InpAddressDadataComponentProps> = ({addAddres
   }, [query]);
 
 
-const sendAddress = (item: string) => {
-setQuery(item)
-addAddress(query)
-}
-
+  const sendAddress = (item: string) => {
+    setQuery(item)
+    addAddress(query)
+  }
 
   return (
     <div>
@@ -46,7 +46,7 @@ addAddress(query)
       {suggestions.length > 0 && (
         <ul>
           {suggestions.map((s, i) => (
-            <li key={i} onClick={() => sendAddress(s)} style={{cursor: "pointer"}}>{s}</li>
+            <li key={i} onClick={() => sendAddress(s)} style={{ cursor: "pointer" }}>{s}</li>
           ))}
         </ul>
       )}

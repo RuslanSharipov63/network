@@ -5,12 +5,11 @@
   flex-direction: column;
   padding-bottom: 40px;
   width: 100%
-
 }
 
 .profileCard {
   display: grid;
-  grid-template-columns:  repeat(auto-fit, minmax(300px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
   gap: 1.5rem;
   padding: 2rem;
   margin: 0 auto;
@@ -49,9 +48,11 @@
 
 .editForm {
   margin-top: 20px;
-  padding: 15px;
+  padding: 20px;
   background: #f9f9f9;
-  border-radius: 5px;
+  box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.93);
+
 }
 
 .editForm label {
@@ -70,6 +71,16 @@
 
 .saveButton {
   background: #2196f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.closeButton {
+  background: red;
   color: white;
   padding: 10px 20px;
   border: none;

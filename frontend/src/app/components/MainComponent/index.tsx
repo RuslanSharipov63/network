@@ -66,7 +66,7 @@ const MainComponent = () => {
                     <p>Помогайте другим — получайте помощь в ответ!</p>
                 </section>
                 {dataServices.status == "pending" ? <Preloader /> : null}
-                {(dataServices.services.length === 0 && dataServices.status == "fulfilled") && 'Никто пока не разместил услуги.'}
+                {(dataServices.services.length === 0 && dataServices.status == "fulfilled") && <div style={{textAlign: "center"}}>Никто пока не разместил услуги.</div>}
                 <section className={styles.servicesGrid}>
                     {dataServices.status == "fulfilled" && dataServices.services.map(el =>
                         <Link href={`/service/${el.id}`} key={el.id}> <div className={styles.serviceCard} >
@@ -81,7 +81,7 @@ const MainComponent = () => {
 
                 </section>
             </div>
-            {isHydrated && <PaginationComponent
+            {(dataServices.services.length === 0 && dataServices.status == "fulfilled") ? null : isHydrated && <PaginationComponent
                 totalPages={Math.ceil(dataServices.totalPages / 10)}
                 page={page} changePage={changePage}
                 leftWrapperPageProp={leftWrapperPage}

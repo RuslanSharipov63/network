@@ -9,7 +9,15 @@ import CardServiceComponent from "../CardServiceComponent";
 import AlertComponent from "../AlertComponent";
 import { fetchGetUserServices, fetchUpdateService } from "@/app/redux/slice/service";
 import { clearMessageAndSuccess, updateStateService } from "@/app/redux/slice/service";
+import InpAddressDadataComponent from "../InpAddressDadataComponent";
+import { updateAddress, updateDataUser } from "@/app/redux/slice/auth";
 import { ServiceCard } from "@/types";
+import { UpdatableUserField } from "@/app/redux/slice/auth";
+
+const validFields: Record<string, UpdatableUserField> = {
+  email: 'email',
+  username: 'username',
+};
 
 const ProfileComponent = () => {
   const dispatch = useAppDispatch();
@@ -17,10 +25,8 @@ const ProfileComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState({ status: false, method: 'POST' });
   const [oneService, setOneService] = useState<ServiceCard | null>(null)
 
-
   const dataUser = useAppSelector((state) => state.authUserReducer);
   const { services, success } = useAppSelector((state) => state.serviceReducer)
-
 
   useEffect(() => {
     if (dataUser.user.id) {
@@ -68,6 +74,23 @@ const ProfileComponent = () => {
     setOneService(null)
     dispatch(clearMessageAndSuccess())
   }
+  const addAddress = (param: string) => {
+    dispatch(updateAddress(param))
+  }
+  const closeEditingForm = () => {
+    setIsEditing(false)
+  }
+
+
+  const updateUserValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const field = validFields[name];
+    if (field) {
+      dispatch(updateDataUser({ valuename: field, param: value }));
+    }
+  }
+
+  const updateProfile = () => { }
 
   return (
     <div className={styles.page}>
@@ -90,7 +113,7 @@ const ProfileComponent = () => {
           <p>
             <strong>Email:</strong> {dataUser.user.email}
           </p>
-          <p>
+          <p style={{ overflow: "hidden" }}>
             <strong>Адрес:</strong>{" "}
             {dataUser.user.address ? dataUser.user.address : "не указан"}
           </p>
@@ -122,21 +145,31 @@ const ProfileComponent = () => {
           <input
             id="edit-name"
             type="text"
-            defaultValue={dataUser.user.username}
+            value={dataUser.user.username}
+            name="username"
+            onChange={updateUserValue}
           />
           <label htmlFor="edit-email">Email</label>
           <input
             id="edit-email"
             type="email"
-            defaultValue={dataUser.user.email}
+            value={dataUser.user.email}
+            name="email"
+            onChange={updateUserValue}
           />
           <label htmlFor="edit-address">Адрес</label>
-          <input
+          {/* <input
             id="edit-address"
             type="text"
             defaultValue={dataUser.user.address}
+          /> */}
+          <InpAddressDadataComponent
+            addAddress={addAddress}
+            currentAddress={dataUser.user.address}
           />
-          <button className={styles.saveButton}>Сохранить изменения</button>
+          <button className={styles.saveButton} onClick={updateProfile}>Сохранить изменения</button>
+          <br />
+          <button className={styles.closeButton} onClick={closeEditingForm}>Закрыть</button>
         </div>
       )}
       {serviceSlice.message != '' ? (

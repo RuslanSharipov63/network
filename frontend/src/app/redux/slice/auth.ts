@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+
+export type UpdatableUserField = 'email' | 'username';
+
 type InitialState = {
   success: boolean;
   message: string;
@@ -46,8 +49,18 @@ export const auth = createSlice({
         role: "",
       };
     },
-  },
-});
+    updateAddress: (state, action: PayloadAction<string>) => {
+      let arr = { ...state }
+      arr.user.address = action.payload;
+      state = arr;
+    },
+    updateDataUser: (state, action: PayloadAction<{ valuename: UpdatableUserField, param: string }>) => {
+      let arr = { ...state }
+        arr.user[action.payload.valuename] = action.payload.param
+        state = arr;
+    }
+    },
+  });
 
-export const { authUser, logoutUser } = auth.actions;
+export const { authUser, logoutUser, updateAddress, updateDataUser } = auth.actions;
 export default auth.reducer;
