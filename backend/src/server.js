@@ -2,7 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
-import http from 'http'; 
+import http from 'http';
 
 import registerRouter from "./api/register.js";
 import loginRouter from "./api/login.js";
@@ -12,6 +12,7 @@ import serviceRouter from './api/service/index.js'
 import suggestAddressRouter from './api/suggest_address.js'
 import chatRouter from './api/chat/index.js'
 import adminRouter from './api/admin/index.js'
+import profileRouter from './api/profile/index.js'
 /* import Server from 'socket.io'; */
 /* import {Server as SocketIO} from 'socket.io'; */
 
@@ -37,6 +38,7 @@ app.use('/api/service', serviceRouter)
 app.use('/api/suggest_address', suggestAddressRouter)
 app.use('/api/chat', chatRouter)
 app.use('/api/admin', adminRouter)
+app.use('/api/profile', profileRouter)
 
 
 /* для сокетов */

@@ -12,7 +12,7 @@ import { clearMessageAndSuccess, updateStateService } from "@/app/redux/slice/se
 import InpAddressDadataComponent from "../InpAddressDadataComponent";
 import { updateAddress, updateDataUser } from "@/app/redux/slice/auth";
 import { ServiceCard } from "@/types";
-import { UpdatableUserField } from "@/app/redux/slice/auth";
+import { UpdatableUserField, fetchUpdateProfile } from "@/app/redux/slice/auth";
 
 const validFields: Record<string, UpdatableUserField> = {
   email: 'email',
@@ -90,7 +90,15 @@ const ProfileComponent = () => {
     }
   }
 
-  const updateProfile = () => { }
+  const updateProfile = () => {
+
+    dispatch(fetchUpdateProfile({
+      id: dataUser.user.id,
+      username: dataUser.user.username,
+      email: dataUser.user.email,
+      address: dataUser.user.address ? dataUser.user.address : undefined,
+    }))
+  }
 
   return (
     <div className={styles.page}>

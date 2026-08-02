@@ -1,5 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+
+
+
+export const fetchUpdateProfile = createAsyncThunk(
+  'name/fetchUpdateProfile',
+  async (profileData: { id: number, username: string, address?: string, email: string }) => {
+    const response = await fetch('http://localhost:5000/api/profile/update', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(profileData)
+    })
+  }
+
+)
 
 
 export type UpdatableUserField = 'email' | 'username';
@@ -56,11 +72,11 @@ export const auth = createSlice({
     },
     updateDataUser: (state, action: PayloadAction<{ valuename: UpdatableUserField, param: string }>) => {
       let arr = { ...state }
-        arr.user[action.payload.valuename] = action.payload.param
-        state = arr;
+      arr.user[action.payload.valuename] = action.payload.param
+      state = arr;
     }
-    },
-  });
+  },
+});
 
 export const { authUser, logoutUser, updateAddress, updateDataUser } = auth.actions;
 export default auth.reducer;
