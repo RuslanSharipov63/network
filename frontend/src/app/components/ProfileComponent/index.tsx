@@ -13,6 +13,7 @@ import InpAddressDadataComponent from "../InpAddressDadataComponent";
 import { updateAddress, updateDataUser } from "@/app/redux/slice/auth";
 import { ServiceCard } from "@/types";
 import { UpdatableUserField, fetchUpdateProfile } from "@/app/redux/slice/auth";
+import { EMAIL_REGEXP } from "@/app/const";
 
 const validFields: Record<string, UpdatableUserField> = {
   email: 'email',
@@ -91,6 +92,19 @@ const ProfileComponent = () => {
   }
 
   const updateProfile = () => {
+
+    if (dataUser.user.username === "") {
+      alert("Заполните все поля");
+      return;
+    }
+    if (!EMAIL_REGEXP.test(dataUser.user.email)) {
+      alert("Не валидный email");
+      return;
+    }
+    if (dataUser.user.username.trim().length === 0) {
+      alert("Имя не может состоять только из пробелов");
+      return;
+    }
 
     dispatch(fetchUpdateProfile({
       id: dataUser.user.id,

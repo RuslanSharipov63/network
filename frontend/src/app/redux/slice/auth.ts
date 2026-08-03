@@ -13,6 +13,8 @@ export const fetchUpdateProfile = createAsyncThunk(
       },
       body: JSON.stringify(profileData)
     })
+    const data = await response.json();
+    return data;
   }
 
 )
@@ -23,6 +25,7 @@ export type UpdatableUserField = 'email' | 'username';
 type InitialState = {
   success: boolean;
   message: string;
+  status: "pending" | "fulfilled" | "rejected" | "Idle"
   user: {
     id: number;
     email: string;
@@ -36,6 +39,7 @@ type InitialState = {
 const initialState: InitialState = {
   success: false,
   message: "",
+  status: "Idle",
   user: {
     id: 0,
     email: "",
@@ -76,6 +80,23 @@ export const auth = createSlice({
       state = arr;
     }
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUpdateProfile.pending, (state) => {
+        state.status = 'pending';
+      })
+      .addCase(fetchUpdateProfile.fulfilled, (state, action: PayloadAction<InitialState>) => {
+        state.status = 'fulfilled';
+        state.user = action.payload.user;
+        state.message = action.payload.message
+      })
+      .addCase(fetchUpdateProfile.rejected, (state) => {
+        state.status = "rejected"
+        state.success = false
+        state.message = "Ошибка обновления профиля. Попробуйте еще раз"
+      })
+  }
+
 });
 
 export const { authUser, logoutUser, updateAddress, updateDataUser } = auth.actions;

@@ -54,6 +54,7 @@ const HeaderComponent = () => {
               success: true,
               message: "Авторизован",
               user: data.user,
+              status: "pending"
             })
           );
           setCheckUrl(false)

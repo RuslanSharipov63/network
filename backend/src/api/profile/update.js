@@ -11,12 +11,21 @@ router.post('/', async (req, res) => {
     }
     try {
 
-        const sql = `UPDATE users SET username = $1, email = $2, address $3, WHERE id = $4 RETURNING id, email, address, username, avatar, role`;
-        const values = [username, email, address];
+        const sql = `UPDATE users SET username = $1, email = $2, address = $3 WHERE id = $4 RETURNING id, email, address, username, avatar, role`;
+        const values = [username, email, address, id];
         const dbResult = await pool.query(sql, values);
-        const result = dbResult.rows[0];
+        const user = dbResult.rows[0];
 
-        res.json({ success: true, message: "Профиль обновлен", result, status: "fulfilled" })
+        res.json({
+            success: true, message: "Профиль обновлен", user: {
+                id: user.id,
+                email: user.email,
+                username: user.username,
+                avatarUrl: user.avatar,
+                address: user.address,
+                role: user.role
+            }, 
+        })
     }
     catch (error) {
         console.log('Ошибка обновления профиля', error)
