@@ -78,6 +78,9 @@ export const auth = createSlice({
       let arr = { ...state }
       arr.user[action.payload.valuename] = action.payload.param
       state = arr;
+    },
+    clearStatusAndMessage: (state) => {
+      state.message = ''
     }
   },
   extraReducers: (builder) => {
@@ -89,6 +92,7 @@ export const auth = createSlice({
         state.status = 'fulfilled';
         state.user = action.payload.user;
         state.message = action.payload.message
+
       })
       .addCase(fetchUpdateProfile.rejected, (state) => {
         state.status = "rejected"
@@ -99,5 +103,5 @@ export const auth = createSlice({
 
 });
 
-export const { authUser, logoutUser, updateAddress, updateDataUser } = auth.actions;
+export const { authUser, logoutUser, updateAddress, updateDataUser, clearStatusAndMessage } = auth.actions;
 export default auth.reducer;

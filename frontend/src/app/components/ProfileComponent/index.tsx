@@ -10,7 +10,7 @@ import AlertComponent from "../AlertComponent";
 import { fetchGetUserServices, fetchUpdateService } from "@/app/redux/slice/service";
 import { clearMessageAndSuccess, updateStateService } from "@/app/redux/slice/service";
 import InpAddressDadataComponent from "../InpAddressDadataComponent";
-import { updateAddress, updateDataUser } from "@/app/redux/slice/auth";
+import { updateAddress, updateDataUser, clearStatusAndMessage } from "@/app/redux/slice/auth";
 import { ServiceCard } from "@/types";
 import { UpdatableUserField, fetchUpdateProfile } from "@/app/redux/slice/auth";
 import { EMAIL_REGEXP } from "@/app/const";
@@ -112,6 +112,13 @@ const ProfileComponent = () => {
       email: dataUser.user.email,
       address: dataUser.user.address ? dataUser.user.address : undefined,
     }))
+    setTimeout(() => {
+      dispatch(clearStatusAndMessage())
+    }, 1000)
+  }
+
+  const actionAfterClose = () => {
+    dispatch(clearStatusAndMessage())
   }
 
   return (
@@ -202,7 +209,14 @@ const ProfileComponent = () => {
         />
       ) : null}
 
-
+      {dataUser.message != '' ? (
+        <AlertComponent
+          title={dataUser.success == true ? "Отлично" : "Что-то пошло не так"}
+          alertType={dataUser.success == true ? "success" : "error"}
+          description={dataUser.message}
+          actionAfterClose={actionAfterClose}
+        />
+      ) : null}
       <h3 className={styles.sectionTitle}>Предложенные услуги</h3>
       <section className={styles.profileCard}>
 

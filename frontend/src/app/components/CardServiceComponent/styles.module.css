@@ -14,11 +14,12 @@
   /* width: 400px;
   margin-left: 5px;
   margin-right: 5px; */
-  overflow-wrap: break-word;
+  overflow-wrap: break-word; 
   font-feature-settings: "liga", "clig";
   /* для красивых лигатур (если шрифт поддерживает) */
-  height: 500px;
-  overflow-y: auto;
+  height: 400px;
+ 
+  overflow: hidden;
 }
 
 .moderationCard {
@@ -35,6 +36,7 @@
   align-items: center;
   min-height: 100px;
   max-height: 100px;
+
 }
 
 .title {
@@ -45,6 +47,7 @@
   letter-spacing: -0.01em;
   word-break: break-all;
   padding: 5px;
+  
 }
 
 .description {
@@ -58,6 +61,7 @@
   font-weight: 400;
   min-height: 100px;
   max-height: 100px;
+
 }
 
 .inReturn {

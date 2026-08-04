@@ -51,12 +51,12 @@ const CardServiceComponent: FC<CardServiceComponentProps> = ({ services, updateS
           <div className={`${styles.card} ${el.status === "модерация" && styles.moderationCard}`} key={index}>
             <div className={styles.status}>{el.status}</div>
             <div className={styles.titleContainer}>
-              <h2 className={styles.title}>{el.title}</h2>
+              <h2 className={styles.title}>{el.title.slice(0, 40)} {el.title.length > 40 && "..."}</h2>
             </div>
-            <p className={styles.description}>{el.description}</p>
+            <p className={styles.description}>{el.description.slice(0, 30)}{el.description.length > 30 && "..."}</p>
             <div className={styles.inReturn}>
               <div className={styles.inReturnLabel}>Взамен</div>
-              <p className={styles.inReturnText}>{el.needed}</p>
+              <p className={styles.inReturnText}>{el.needed.slice(0, 30)}{el.needed.length > 30 && "..."}</p>
             </div>
             {el.updated_at && (
               <div className={styles.footer}>

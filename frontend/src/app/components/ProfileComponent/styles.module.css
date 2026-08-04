@@ -17,6 +17,7 @@
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
+   place-content: center;
 }
 
 .profileHeader {
@@ -48,6 +49,7 @@
 
 .editForm {
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 20px;
   background: #f9f9f9;
   box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.15);
@@ -73,10 +75,12 @@
   background: #4caf50;
   color: white;
   padding: 10px 20px;
+  box-sizing: border-box;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  width: 150px;
 }
 
 .closeButton {
@@ -87,6 +91,8 @@
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  width: 150px;
+   box-sizing: border-box;
 }
 
 .sectionTitle {
