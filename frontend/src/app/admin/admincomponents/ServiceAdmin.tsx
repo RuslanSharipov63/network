@@ -46,14 +46,14 @@ const ServiceAdmin = () => {
     const item = data.rows[0];
 
     const { id, userid, title, description, needed, created_at, updated_at, status, username, avatar, address } = item;
-
+console.log(updated_at)
     const changeStatus = (currentStatus: string) => {
 
         mutation.mutate({ currentStatus, id });
     }
     return (
-        <div style={{ display: 'flex', justifyContent: "center" }}>
-            <Card title={title} variant="borderless" style={{ width: 500, fontSize: "150%", }}>
+        <div style={{ display: 'flex', justifyContent: "center",  overflowWrap: "break-word"}}>
+            <Card title={title} variant="borderless" style={{ width: 500, fontSize: "150%", maxHeight: "500px", overflow: "auto" }}>
                 <Image
                     src={avatar}
                     width={200}
@@ -64,7 +64,7 @@ const ServiceAdmin = () => {
                 <p style={classSelector}>Адрес: {address}</p>
                 <p style={classSelector}>Описание:  {description}</p>
                 <p style={classSelector}>Что нужно:  {needed}</p>
-                <p style={classSelector}>Создано:  {updated_at.slice(0, updated_at.indexOf('T'))}</p>
+               <p style={classSelector}>Создано:  {updated_at !== null ? updated_at.slice(0, updated_at.indexOf('T')) : created_at.slice(0, created_at.indexOf('T'))}</p>
                 <p style={classSelector}>Статус: {status}</p>
                 {status === 'одобрен' ? <Button color="danger" variant="solid" onClick={() => changeStatus('модерация')} >
                     Снять с публикации </Button> : <Button type="primary" onClick={() => changeStatus('одобрен')}>Одобрить</Button>}

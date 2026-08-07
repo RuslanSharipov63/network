@@ -2,6 +2,9 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  max-height: 500px;
+  overflow: auto;
+  overflow-wrap: break-word;
 }
 
 .serviceHeader {
@@ -13,18 +16,33 @@
   font-size: 2.2rem;
   color: #2e7d32;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .serviceContent {
   display: grid;
+  grid-template-columns: 200px auto;
   gap: 30px;
   margin-bottom: 40px;
+
 }
 
 @media (min-width: 768px) {
   .serviceContent {
     grid-template-columns: 2fr 1fr;
   }
+}
+
+@media (max-width: 768px) {
+  .serviceContent {
+    grid-template-columns: 100%;
+  }
+}
+
+.serviceInfo {
+  max-width: 600px;
+  overflow-wrap: break-word;
+  padding-right: 5px;
 }
 
 .serviceInfo h3 {
@@ -87,10 +105,12 @@
   border: none;
   padding: 12px 24px;
   border-radius: 6px;
-  font-size: 1rem;     /* ✅ Число + единица измерения */
+  font-size: 1rem;
+  /* ✅ Число + единица измерения */
   cursor: pointer;
   flex: 1;
-  min-width: 140px;   /* ✅ Вероятно, вы имели в виду минимальную ширину (как в других кнопках) */
+  min-width: 140px;
+  /* ✅ Вероятно, вы имели в виду минимальную ширину (как в других кнопках) */
   /* или, если хотели высоту: */
   /* height: 40px; */
 }

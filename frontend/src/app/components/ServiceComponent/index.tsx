@@ -67,7 +67,7 @@ const ServiceComponent = () => {
     const closeModalWindow = () => {
         setIsOpen(false);
     }
-  
+
     return (
         <>
             <ModalMessage
@@ -87,20 +87,6 @@ const ServiceComponent = () => {
                 </section>
 
                 <section className={styles.serviceContent}>
-                    <div className={styles.serviceInfo}>
-                        <h3>Описание</h3>
-                        <p>{serviceState.services[0].description}</p>
-
-                        <h3>Что нужно взамен</h3>
-                        <p>{serviceState.services[0].needed || "Не указано"}</p>
-
-                        <h3>Адрес</h3>
-                        <p>{serviceState.services[0].address || "Не указан"}</p>
-
-                        <h3>Создано</h3>
-                        {createdAt}
-                    </div>
-
                     <div className={styles.authorCard}>
                         <h3>Автор услуги</h3>
                         <div className={styles.authorInfo}>
@@ -117,6 +103,21 @@ const ServiceComponent = () => {
                             </div>
                         </div>
                     </div>
+                    <div className={styles.serviceInfo}>
+                        <h3>Описание</h3>
+                        <p>{serviceState.services[0].description}</p>
+
+                        <h3>Что нужно взамен</h3>
+                        <p>{serviceState.services[0].needed || "Не указано"}</p>
+
+                        <h3>Адрес</h3>
+                        <p>{serviceState.services[0].address || "Не указан"}</p>
+
+                        <h3>Создано</h3>
+                        {createdAt}
+                    </div>
+
+
                 </section>
 
                 <section className={styles.actionButtons}>

@@ -70,9 +70,9 @@ const MainComponent = () => {
                 <section className={styles.servicesGrid}>
                     {dataServices.status == "fulfilled" && dataServices.services.map(el =>
                         <Link href={`/service/${el.id}`} key={el.id}> <div className={styles.serviceCard} >
-                            <h3>{el.title}</h3>
-                            <p>{el.description}</p>
-                            <p>{el.needed}</p>
+                            <h3>{el.title.slice(0, 15)}</h3>
+                            <p>Ты - мне: {el.needed.slice(0, 15)}</p>
+                            <p>Я - тебе: {el.description.slice(0, 15)}</p>
                             <p>Создан: {el.updated_at != null && new Date(el.updated_at).toLocaleDateString()}</p>
                             <p>От: <strong>{el.username}</strong></p>
                             <p>адрес: {el.address}</p>
